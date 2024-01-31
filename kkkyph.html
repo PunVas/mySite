@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Checkbox App</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+
+    .checkbox-container {
+      display: flex;
+      flex-direction: column;
+      max-width: 400px;
+      margin: auto;
+    }
+
+    .checkbox-item {
+      margin-bottom: 10px;
+    }
+
+    input[type="checkbox"] {
+      margin-right: 10px;
+    }
+
+    .strikethrough {
+      text-decoration: line-through;
+    }
+  </style>
+</head>
+<body>
+
+<div class="checkbox-container">
+  <div class="checkbox-item">
+    <input type="checkbox" id="checkbox1">
+    <label for="checkbox1">Checkbox 1</label>
+  </div>
+  <div class="checkbox-item">
+    <input type="checkbox" id="checkbox2">
+    <label for="checkbox2">Checkbox 2</label>
+  </div>
+  <div class="checkbox-item">
+    <input type="checkbox" id="checkbox3">
+    <label for="checkbox3">Checkbox 3</label>
+  </div>
+</div>
+
+<script>
+  // Function to set cookies without expiration
+  function setCookie(name, value) {
+    document.cookie = name + "=" + (value || "") + "; path=/";
+  }
+
+  // Function to get cookies
+  function getCookie(name) {
+    var nameEQ = name + "=";
+    var ca = document.cookie.split(';');
+    for (var i = 0; i < ca.length; i++) {
+      var c = ca[i];
+      while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+      if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+    }
+    return null;
+  }
+
+  // Function to toggle strikethrough based on checkbox state
+  function updateCheckboxState() {
+    var checkboxes = document.querySelectorAll('input[type="checkbox"]');
+    
+    checkboxes.forEach(function(checkbox) {
+      var label = checkbox.nextElementSibling;
+
+      checkbox.addEventListener('change', function() {
+        if (checkbox.checked) {
+          label.classList.add('strikethrough');
+        } else {
+          label.classList.remove('strikethrough');
+        }
+
+        // Update cookies when a checkbox state changes
+        setCookie(checkbox.id, checkbox.checked.toString());
+      });
+
+      // Restore checkbox state from cookies
+      var storedValue = getCookie(checkbox.id);
+      if (storedValue !== null) {
+        checkbox.checked = storedValue === 'true';
+        if (checkbox.checked) {
+          label.classList.add('strikethrough');
+        }
+      }
+    });
+  }
+
+  // Call the function to initialize checkbox states
+  updateCheckboxState();
+</script>
+
+</body>
+</html>
