@@ -11,19 +11,30 @@
       background-color: #f4f4f4;
     }
 
+    header {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    header h1 {
+      font-size: 24px;
+      color: #333;
+    }
+
     .checkbox-container {
       display: flex;
       flex-direction: column;
       max-width: 400px;
       margin: auto;
-      background-color: #fff;
-      padding: 20px;
-      border-radius: 8px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     }
 
     .checkbox-item {
       margin-bottom: 15px;
+      padding: 10px;
+      border: 2px solid #ccc;
+      border-radius: 8px;
+      background-color: #fff;
+      transition: background-color 0.3s ease;
     }
 
     input[type="checkbox"] {
@@ -38,6 +49,21 @@
       text-decoration: line-through;
     }
 
+    input[type="checkbox"]:checked + label {
+      color: #888;
+    }
+
+    input[type="checkbox"]:checked + label::before {
+      content: '\2713'; /* Checkmark symbol */
+      font-size: 16px;
+      margin-right: 5px;
+    }
+
+    input[type="checkbox"]:checked + .checkbox-item {
+      background-color: #e6f7ff; /* Change background color when checked */
+      border-color: #66b2ff; /* Change border color when checked */
+    }
+
     @media only screen and (max-width: 600px) {
       .checkbox-container {
         max-width: 100%;
@@ -46,6 +72,10 @@
   </style>
 </head>
 <body>
+
+<header>
+  <h1>KKK/PH</h1>
+</header>
 
 <div class="checkbox-container">
   <div class="checkbox-item">
