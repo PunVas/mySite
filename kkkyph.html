@@ -60,8 +60,8 @@
     }
 
     input[type="checkbox"]:checked + .checkbox-item {
-      background-color: #e6f7ff; /* Change background color when checked */
-      border-color: #66b2ff; /* Change border color when checked */
+      background-color: #e6f7ff; 
+      border-color: #66b2ff; 
     }
     .last-updated {
       text-align: center;
@@ -90,6 +90,10 @@
     <input type="checkbox" id="checkbox1">
     <label for="checkbox1">Which lang for DSA Java,C++,Python? Already familiar with Python </label>
   </div>
+  <div class="checkbox-item">
+    <input type="checkbox" id="checkbox2">
+    <label for="checkbox1">Bing search points redemption options -Amazon Pay GC -FLipkart GC -Joyalukkas Gold and Diamond GC </label>
+  </div>
   </div>
 
   
@@ -103,7 +107,7 @@
     document.cookie = name + "=" + (value || "") + "; path=/";
   }
 
-  // Function to get cookies
+
   function getCookie(name) {
     var nameEQ = name + "=";
     var ca = document.cookie.split(';');
@@ -115,7 +119,7 @@
     return null;
   }
 
-  // Function to toggle strikethrough based on checkbox state
+  
   function updateCheckboxState() {
     var checkboxes = document.querySelectorAll('input[type="checkbox"]');
     
@@ -129,7 +133,7 @@
           label.classList.remove('strikethrough');
         }
 
-        // Update cookies when a checkbox state changes
+        
         setCookie(checkbox.id, checkbox.checked.toString());
       });
 
@@ -144,7 +148,7 @@
     });
   }
 
-  // Call the function to initialize checkbox states
+ 
   updateCheckboxState();
 
   
